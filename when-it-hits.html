@@ -108,6 +108,24 @@
     .step { grid-template-columns: 44px 1fr; gap: 14px; }
     .step-number { font-size: 34px; }
   }
+
+  /* FEELING WHEEL */
+  .feeling-wheel-section { background: linear-gradient(160deg, #FBF7FF 0%, #F5F0FA 100%); padding: 72px 24px; }
+  .feeling-wheel-inner { max-width: 480px; margin: 0 auto; }
+  .feeling-wheel-wrap { position: relative; width: 100%; max-width: 360px; margin: 32px auto 0; }
+  #feeling-wheel { width: 100%; height: auto; cursor: pointer; }
+  .fw-slice { transition: opacity 0.18s, filter 0.18s; cursor: pointer; }
+  .fw-slice:hover { opacity: 0.82; filter: brightness(1.08); }
+  .fw-slice.active { filter: brightness(1.15) drop-shadow(0 0 6px rgba(0,0,0,0.18)); }
+  .fw-label-core { font-family: 'Fraunces', serif; font-size: 11px; fill: white; font-weight: 600; pointer-events: none; }
+  .fw-centre-main { font-family: 'Fraunces', serif; font-size: 18px; fill: #6B4FA8; font-weight: 400; }
+  .fw-centre-hint { font-family: 'Nunito', sans-serif; font-size: 11px; fill: #9B7FD4; }
+  .fw-result { margin-top: 24px; padding: 20px; background: white; border-radius: 18px; border: 1.5px solid #E0D4F0; text-align: center; animation: fadeUp 0.4s ease; }
+  .fw-result-feeling { font-family: 'Fraunces', serif; font-size: 26px; color: #6B4FA8; margin-bottom: 8px; }
+  .fw-result-desc { font-size: 14px; color: #7A6A8A; line-height: 1.7; margin-bottom: 14px; }
+  .fw-reset { font-size: 13px; color: #9B7FD4; background: none; border: 1px solid #D4C4E8; border-radius: 20px; padding: 6px 18px; cursor: pointer; }
+  .fw-reset:hover { background: #F5F0FA; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
@@ -422,11 +440,104 @@
   </div>
 </section>
 
+
+<!-- FEELING WHEEL -->
+<section class="feeling-wheel-section" id="feeling-wheel-section">
+  <div class="feeling-wheel-inner">
+    <div class="body-map-title">What are you actually feeling?</div>
+    <div class="body-map-sub">Start from the centre. Work outward.</div>
+    <div class="feeling-wheel-wrap">
+      <svg id="feeling-wheel" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- ── CORE emotions (innermost ring) ── -->
+        <!-- SAD -->
+        <path id="core-sad" class="fw-slice fw-core" d="M200 200 L200 80 A120 120 0 0 0 96 140 Z" fill="#7B8CDE" onclick="selectCore('sad')"/>
+        <!-- ANGRY -->
+        <path id="core-angry" class="fw-slice fw-core" d="M200 200 L96 140 A120 120 0 0 0 96 260 Z" fill="#E07B6A" onclick="selectCore('angry')"/>
+        <!-- DISGUSTED -->
+        <path id="core-disgusted" class="fw-slice fw-core" d="M200 200 L96 260 A120 120 0 0 0 200 320 Z" fill="#8DBB7A" onclick="selectCore('disgusted')"/>
+        <!-- AFRAID -->
+        <path id="core-afraid" class="fw-slice fw-core" d="M200 200 L200 320 A120 120 0 0 0 304 260 Z" fill="#B89AD4" onclick="selectCore('afraid')"/>
+        <!-- HAPPY -->
+        <path id="core-happy" class="fw-slice fw-core" d="M200 200 L304 260 A120 120 0 0 0 304 140 Z" fill="#F2C46A" onclick="selectCore('happy')"/>
+        <!-- SURPRISED -->
+        <path id="core-surprised" class="fw-slice fw-core" d="M200 200 L304 140 A120 120 0 0 0 200 80 Z" fill="#F4A06A" onclick="selectCore('surprised')"/>
+
+        <!-- Core labels -->
+        <text class="fw-label-core" x="168" y="118" transform="rotate(-60 200 200)" text-anchor="middle">Sad</text>
+        <text class="fw-label-core" x="168" y="118" transform="rotate(-120 200 200)" text-anchor="middle">Angry</text>
+        <text class="fw-label-core" x="168" y="118" transform="rotate(-180 200 200)" text-anchor="middle">Disgusted</text>
+        <text class="fw-label-core" x="168" y="118" transform="rotate(-240 200 200)" text-anchor="middle">Afraid</text>
+        <text class="fw-label-core" x="168" y="118" transform="rotate(-300 200 200)" text-anchor="middle">Happy</text>
+        <text class="fw-label-core" x="168" y="118" transform="rotate(0 200 200)" text-anchor="middle">Surprised</text>
+
+        <!-- ── MID ring ── -->
+        <!-- SAD mid -->
+        <path class="fw-slice fw-mid" data-core="sad" d="M200 200 L200 80 A120 120 0 0 0 148 90 Z" fill="#9AAAE8" onclick="selectMid('lonely','sad')"/>
+        <path class="fw-slice fw-mid" data-core="sad" d="M200 200 L148 90 A120 120 0 0 0 96 140 Z" fill="#8898DE" onclick="selectMid('vulnerable','sad')"/>
+        <!-- ANGRY mid -->
+        <path class="fw-slice fw-mid" data-core="angry" d="M200 200 L96 140 A120 120 0 0 0 80 200 Z" fill="#E89080" onclick="selectMid('hurt','angry')"/>
+        <path class="fw-slice fw-mid" data-core="angry" d="M200 200 L80 200 A120 120 0 0 0 96 260 Z" fill="#E07060" onclick="selectMid('threatened','angry')"/>
+        <!-- DISGUSTED mid -->
+        <path class="fw-slice fw-mid" data-core="disgusted" d="M200 200 L96 260 A120 120 0 0 0 148 310 Z" fill="#A4CC90" onclick="selectMid('awful','disgusted')"/>
+        <path class="fw-slice fw-mid" data-core="disgusted" d="M200 200 L148 310 A120 120 0 0 0 200 320 Z" fill="#8EBB78" onclick="selectMid('disapproval','disgusted')"/>
+        <!-- AFRAID mid -->
+        <path class="fw-slice fw-mid" data-core="afraid" d="M200 200 L200 320 A120 120 0 0 0 252 310 Z" fill="#C4A8E0" onclick="selectMid('rejected','afraid')"/>
+        <path class="fw-slice fw-mid" data-core="afraid" d="M200 200 L252 310 A120 120 0 0 0 304 260 Z" fill="#A888CC" onclick="selectMid('scared','afraid')"/>
+        <!-- HAPPY mid -->
+        <path class="fw-slice fw-mid" data-core="happy" d="M200 200 L304 260 A120 120 0 0 0 320 200 Z" fill="#F8D080" onclick="selectMid('playful','happy')"/>
+        <path class="fw-slice fw-mid" data-core="happy" d="M200 200 L320 200 A120 120 0 0 0 304 140 Z" fill="#F2C050" onclick="selectMid('content','happy')"/>
+        <!-- SURPRISED mid -->
+        <path class="fw-slice fw-mid" data-core="surprised" d="M200 200 L304 140 A120 120 0 0 0 252 90 Z" fill="#F8B888" onclick="selectMid('excited','surprised')"/>
+        <path class="fw-slice fw-mid" data-core="surprised" d="M200 200 L252 90 A120 120 0 0 0 200 80 Z" fill="#F49860" onclick="selectMid('confused','surprised')"/>
+
+        <!-- ── OUTER ring ── -->
+        <!-- Outer SAD -->
+        <path class="fw-slice fw-outer" data-core="sad" d="M200 200 L200 20 A180 180 0 0 0 155 30 Z" fill="#B8C4F4" onclick="selectOuter('isolated')"/>
+        <path class="fw-slice fw-outer" data-core="sad" d="M200 200 L155 30 A180 180 0 0 0 110 60 Z" fill="#A8B4EC" onclick="selectOuter('abandoned')"/>
+        <path class="fw-slice fw-outer" data-core="sad" d="M200 200 L110 60 A180 180 0 0 0 62 105 Z" fill="#98A4E4" onclick="selectOuter('fragile')"/>
+        <path class="fw-slice fw-outer" data-core="sad" d="M200 200 L62 105 A180 180 0 0 0 20 155 Z" fill="#8898DC" onclick="selectOuter('grief')"/>
+        <!-- Outer ANGRY -->
+        <path class="fw-slice fw-outer" data-core="angry" d="M200 200 L20 155 A180 180 0 0 0 20 200 Z" fill="#F0A898" onclick="selectOuter('furious')"/>
+        <path class="fw-slice fw-outer" data-core="angry" d="M200 200 L20 200 A180 180 0 0 0 20 245 Z" fill="#E89888" onclick="selectOuter('jealous')"/>
+        <path class="fw-slice fw-outer" data-core="angry" d="M200 200 L20 245 A180 180 0 0 0 62 295 Z" fill="#E08878" onclick="selectOuter('frustrated')"/>
+        <path class="fw-slice fw-outer" data-core="angry" d="M200 200 L62 295 A180 180 0 0 0 110 340 Z" fill="#D87868" onclick="selectOuter('critical')"/>
+        <!-- Outer DISGUSTED -->
+        <path class="fw-slice fw-outer" data-core="disgusted" d="M200 200 L110 340 A180 180 0 0 0 155 368 Z" fill="#BCDEAC" onclick="selectOuter('repelled')"/>
+        <path class="fw-slice fw-outer" data-core="disgusted" d="M200 200 L155 368 A180 180 0 0 0 200 380 Z" fill="#ACCE9C" onclick="selectOuter('judgemental')"/>
+        <path class="fw-slice fw-outer" data-core="disgusted" d="M200 200 L200 380 A180 180 0 0 0 245 368 Z" fill="#9CBE8C" onclick="selectOuter('embarrassed')"/>
+        <!-- Outer AFRAID -->
+        <path class="fw-slice fw-outer" data-core="afraid" d="M200 200 L245 368 A180 180 0 0 0 290 340 Z" fill="#D4B8EC" onclick="selectOuter('humiliated')"/>
+        <path class="fw-slice fw-outer" data-core="afraid" d="M200 200 L290 340 A180 180 0 0 0 338 295 Z" fill="#C4A8DC" onclick="selectOuter('inferior')"/>
+        <path class="fw-slice fw-outer" data-core="afraid" d="M200 200 L338 295 A180 180 0 0 0 380 245 Z" fill="#B498CC" onclick="selectOuter('overwhelmed')"/>
+        <path class="fw-slice fw-outer" data-core="afraid" d="M200 200 L380 245 A180 180 0 0 0 380 200 Z" fill="#A488BC" onclick="selectOuter('anxious')"/>
+        <!-- Outer HAPPY -->
+        <path class="fw-slice fw-outer" data-core="happy" d="M200 200 L380 200 A180 180 0 0 0 380 155 Z" fill="#FCDFA0" onclick="selectOuter('energetic')"/>
+        <path class="fw-slice fw-outer" data-core="happy" d="M200 200 L380 155 A180 180 0 0 0 338 105 Z" fill="#FAD080" onclick="selectOuter('joyful')"/>
+        <path class="fw-slice fw-outer" data-core="happy" d="M200 200 L338 105 A180 180 0 0 0 290 60 Z" fill="#F8C060" onclick="selectOuter('grateful')"/>
+        <path class="fw-slice fw-outer" data-core="happy" d="M200 200 L290 60 A180 180 0 0 0 245 30 Z" fill="#F6B040" onclick="selectOuter('hopeful')"/>
+        <!-- Outer SURPRISED -->
+        <path class="fw-slice fw-outer" data-core="surprised" d="M200 200 L245 30 A180 180 0 0 0 200 20 Z" fill="#FCD0A8" onclick="selectOuter('amazed')"/>
+        <path class="fw-slice fw-outer" data-core="surprised" d="M200 200 L200 20 A180 180 0 0 0 155 30 Z" fill="#FAB888" onclick="selectOuter('confused2')"/>
+
+        <!-- Centre circle -->
+        <circle cx="200" cy="200" r="48" fill="white" opacity="0.92"/>
+        <text id="fw-centre-label" x="200" y="196" text-anchor="middle" class="fw-centre-main">How</text>
+        <text id="fw-centre-sub" x="200" y="214" text-anchor="middle" class="fw-centre-hint">do you feel?</text>
+      </svg>
+    </div>
+    <div id="fw-result" class="fw-result" style="display:none;">
+      <div class="fw-result-feeling" id="fw-result-feeling"></div>
+      <div class="fw-result-desc" id="fw-result-desc"></div>
+      <button class="fw-reset" onclick="resetWheel()">↩ Start again</button>
+    </div>
+  </div>
+</section>
+
 <!-- REST OF STEPS -->
 <section class="steps-section" style="padding-top:60px;">
 
   <div class="step" data-step>
-    <div class="step-number">03</div>
+    <div class="step-number">04</div>
     <div class="step-body">
       <div class="step-title">Ground yourself in the room</div>
       <div class="step-desc">Five things you can see. Four you can touch. Three you can hear. Two you can smell. One you can taste. Pulls you back into the present, out of the imagined future where the fear lives.</div>
@@ -435,7 +546,7 @@
   </div>
 
   <div class="step" data-step>
-    <div class="step-number">04</div>
+    <div class="step-number">05</div>
     <div class="step-body">
       <div class="step-title">Say the fear out loud or write it down</div>
       <div class="step-desc">One sentence. Gets it out of your head and into a form you can look at. Anxiety is loud in the dark and quiet in the light.</div>
@@ -446,7 +557,7 @@
   <div class="divider"></div>
 
   <div class="step" data-step>
-    <div class="step-number">05</div>
+    <div class="step-number">06</div>
     <div class="step-body">
       <div class="step-title">Ask one question only</div>
       <div class="step-desc">"Is there anything I can do about this right now, today?" If yes — do it. If no — you have permission to set it down. Not forever. Just for now.</div>
@@ -455,7 +566,7 @@
   </div>
 
   <div class="step" data-step>
-    <div class="step-number">06</div>
+    <div class="step-number">07</div>
     <div class="step-body">
       <div class="step-title">Go on a quick 5 minute walk</div>
       <div class="step-desc">Leave the headphones at home. No music, no podcast. Just you and the outside air. Anxiety is stored energy — walking moves it through you. The silence is part of the medicine.</div>
@@ -475,7 +586,7 @@
   </div>
 
   <div class="step" data-step>
-    <div class="step-number">07</div>
+    <div class="step-number">08</div>
     <div class="step-body">
       <div class="step-title">Talk to someone</div>
       <div class="step-desc">Not to solve it — just to say it out loud to another person. The spiral stays a spiral when it's only in your head. You don't have to carry this alone, Naoise.</div>
@@ -584,6 +695,105 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
 }, { threshold: 0.12 });
 steps.forEach(s => obs.observe(s));
+
+// ── FEELING WHEEL ──────────────────────────────────────────────────────────
+const feelingDescs = {
+  // Core
+  sad: "You're carrying something heavy right now. That's real and valid.",
+  angry: "Something feels unfair or violated. Your anger is telling you something matters.",
+  disgusted: "Something feels deeply wrong or off. Trust that instinct.",
+  afraid: "Your nervous system is trying to protect you. You're safe right now.",
+  happy: "There's light here. Let yourself feel it without guilt.",
+  surprised: "Something caught you off guard. Give yourself a moment.",
+  // Mid
+  lonely: "Feeling alone even when people are around. You don't have to white-knuckle this.",
+  vulnerable: "You're open and exposed right now. That takes courage.",
+  hurt: "Something stung. It's okay to acknowledge the wound.",
+  threatened: "Your sense of safety feels shaken. Breathe — you're here.",
+  awful: "Everything feels dark and heavy. This will pass.",
+  disapproval: "Something isn't sitting right with you. That matters.",
+  rejected: "You reached out and it didn't land. That hurts.",
+  scared: "Fear is loud right now. Name it — that reduces its power.",
+  playful: "Something light is trying to come through. Let it.",
+  content: "A quiet kind of okay. Rest here.",
+  excited: "Energy and anticipation alive in your body. Ride it.",
+  confused: "You don't have to have it figured out yet.",
+  isolated: "Cut off and alone. Reach out to one person today.",
+  abandoned: "The fear that people leave. You are not too much.",
+  fragile: "Thin-skinned and easily broken right now. Be gentle with yourself.",
+  grief: "Loss lives in the body. Let it move through, not get stuck.",
+  furious: "White-hot rage. You need to move your body — walk, scream into a pillow.",
+  jealous: "Wanting what someone else has. It's pointing at what you value.",
+  frustrated: "Blocked, stuck, unheard. One small thing you can control right now?",
+  critical: "Harsh inner voice loud today. Would you say this to Naoise-from-five-years-ago?",
+  repelled: "A deep no. Your instincts are sharp.",
+  judgemental: "Your standards are showing. Are they serving you right now?",
+  embarrassed: "The heat of being seen in a way you didn't want. It fades.",
+  humiliated: "Exposed and small. This moment isn't your whole story.",
+  inferior: "Measuring yourself against others and losing. Different timelines.",
+  overwhelmed: "Too much, all at once. One breath. One thing.",
+  anxious: "Future-focused fear. Come back to right now — what's true in this exact second?",
+  energetic: "Alive and ready. Channel it.",
+  joyful: "Full and light. This is real too.",
+  grateful: "Noticing what's good. Hold onto this.",
+  hopeful: "Something feels possible. That matters.",
+  amazed: "Stopped in your tracks by something good or big.",
+  confused2: "Fog and uncertainty. You don't have to resolve it now.",
+};
+
+let currentCore = null;
+
+function selectCore(core) {
+  currentCore = core;
+  document.querySelectorAll('.fw-slice').forEach(s => {
+    s.classList.remove('active');
+    if (s.dataset.core && s.dataset.core !== core) {
+      s.style.opacity = '0.3';
+    } else {
+      s.style.opacity = '1';
+    }
+  });
+  document.getElementById('core-' + core)?.classList.add('active');
+  document.getElementById('fw-centre-label').textContent = core.charAt(0).toUpperCase() + core.slice(1);
+  document.getElementById('fw-centre-sub').textContent = 'tap to explore';
+  showResult(core);
+}
+
+function selectMid(feeling, core) {
+  document.getElementById('fw-centre-label').textContent = feeling.charAt(0).toUpperCase() + feeling.slice(1);
+  document.getElementById('fw-centre-sub').textContent = '→ more specific?';
+  showResult(feeling);
+}
+
+function selectOuter(feeling) {
+  const label = feeling.replace('2','');
+  document.getElementById('fw-centre-label').textContent = label.charAt(0).toUpperCase() + label.slice(1);
+  document.getElementById('fw-centre-sub').textContent = '✦';
+  showResult(feeling);
+}
+
+function showResult(feeling) {
+  const key = feeling.replace('2','');
+  const desc = feelingDescs[key] || feelingDescs[feeling] || "You're feeling something real. That's enough to start with.";
+  const label = key.charAt(0).toUpperCase() + key.slice(1);
+  document.getElementById('fw-result-feeling').textContent = label;
+  document.getElementById('fw-result-desc').textContent = desc;
+  const result = document.getElementById('fw-result');
+  result.style.display = 'block';
+  result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function resetWheel() {
+  currentCore = null;
+  document.querySelectorAll('.fw-slice').forEach(s => {
+    s.classList.remove('active');
+    s.style.opacity = '1';
+  });
+  document.getElementById('fw-centre-label').textContent = 'How';
+  document.getElementById('fw-centre-sub').textContent = 'do you feel?';
+  document.getElementById('fw-result').style.display = 'none';
+}
+
 </script>
 </body>
 </html>
