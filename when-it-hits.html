@@ -247,105 +247,151 @@
 
       <!-- BODY SVG -->
       <div class="body-map-svg">
-        <svg viewBox="0 0 200 430" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 220 520" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-          <!-- ── HAIR ── -->
-          <circle cx="100" cy="52" r="46" fill="#6B1A2A"/>
-          <circle cx="66" cy="62" r="20" fill="#7D1F32"/>
-          <circle cx="61" cy="46" r="18" fill="#6B1A2A"/>
-          <circle cx="68" cy="30" r="18" fill="#7D1F32"/>
-          <circle cx="84" cy="20" r="17" fill="#6B1A2A"/>
-          <circle cx="100" cy="16" r="18" fill="#7D1F32"/>
-          <circle cx="116" cy="20" r="17" fill="#6B1A2A"/>
-          <circle cx="132" cy="30" r="18" fill="#7D1F32"/>
-          <circle cx="139" cy="46" r="18" fill="#6B1A2A"/>
-          <circle cx="134" cy="62" r="20" fill="#7D1F32"/>
-          <circle cx="122" cy="72" r="14" fill="#6B1A2A"/>
-          <circle cx="78" cy="72" r="14" fill="#7D1F32"/>
-          <ellipse cx="88" cy="34" rx="15" ry="7" fill="#9B2A40" opacity="0.55" transform="rotate(-25 88 34)"/>
-          <ellipse cx="116" cy="28" rx="12" ry="6" fill="#9B2A40" opacity="0.4" transform="rotate(20 116 28)"/>
+          <!-- ═══ SHADOW ═══ -->
+          <ellipse cx="106" cy="510" rx="50" ry="8" fill="#D0C8C0" opacity="0.4"/>
 
-          <!-- ── HEAD ── -->
-          <g class="zone" onclick="selectZone('head')" id="zone-head">
-            <ellipse cx="100" cy="84" rx="30" ry="34" fill="#C8885A"/>
-            <ellipse class="zone-fill" cx="100" cy="84" rx="30" ry="34" fill="#9B7FD4" opacity="0"/>
-            <!-- eyebrows -->
-            <path d="M86 76 Q92 71 98 74" stroke="#5C3010" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-            <path d="M102 74 Q108 71 114 76" stroke="#5C3010" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-            <!-- oval glasses -->
-            <ellipse cx="92" cy="81" rx="10" ry="6" fill="none" stroke="#2A2020" stroke-width="2"/>
-            <ellipse cx="108" cy="81" rx="10" ry="6" fill="none" stroke="#2A2020" stroke-width="2"/>
-            <line x1="102" y1="81" x2="98" y2="81" stroke="#2A2020" stroke-width="1.3"/>
-            <line x1="82" y1="80" x2="76" y2="77" stroke="#2A2020" stroke-width="1.3" stroke-linecap="round"/>
-            <line x1="118" y1="80" x2="124" y2="77" stroke="#2A2020" stroke-width="1.3" stroke-linecap="round"/>
-            <ellipse cx="92" cy="81" rx="8" ry="4.5" fill="#B8A8CC" opacity="0.2"/>
-            <ellipse cx="108" cy="81" rx="8" ry="4.5" fill="#B8A8CC" opacity="0.2"/>
-            <!-- nose -->
-            <path d="M97 90 Q100 94 103 90" stroke="#A06030" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-            <!-- mouth -->
-            <path d="M90 100 Q100 108 110 100" stroke="#5C3010" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-            <!-- cheeks -->
-            <ellipse cx="84" cy="96" rx="7" ry="4.5" fill="#E8A070" opacity="0.28"/>
-            <ellipse cx="116" cy="96" rx="7" ry="4.5" fill="#E8A070" opacity="0.28"/>
-          </g>
-
-          <!-- ── NECK ── -->
-          <g class="zone" onclick="selectZone('throat')" id="zone-throat">
-            <path d="M90 117 Q90 130 100 132 Q110 130 110 117 L108 113 Q100 116 92 113 Z" fill="#C8885A"/>
-            <path class="zone-fill" d="M90 117 Q90 130 100 132 Q110 130 110 117 L108 113 Q100 116 92 113 Z" fill="#9B7FD4" opacity="0"/>
-          </g>
-
-          <!-- ── ARMS (drawn first so body overlaps) ── -->
-          <!-- left arm — curves gently outward then down -->
-          <path d="M68 140 Q42 155 38 185 Q36 200 40 212" stroke="#C8885A" stroke-width="17" stroke-linecap="round" fill="none"/>
-          <!-- right arm -->
-          <path d="M132 140 Q158 155 162 185 Q164 200 160 212" stroke="#C8885A" stroke-width="17" stroke-linecap="round" fill="none"/>
-
-          <!-- ── SHOULDERS ── -->
-          <g class="zone" onclick="selectZone('shoulders')" id="zone-shoulders">
-            <ellipse cx="52" cy="137" rx="22" ry="15" fill="#8B7AC4" opacity="0.7"/>
-            <ellipse class="zone-fill" cx="52" cy="137" rx="22" ry="15" fill="#6B4FA8" opacity="0"/>
-            <ellipse cx="148" cy="137" rx="22" ry="15" fill="#8B7AC4" opacity="0.7"/>
-            <ellipse class="zone-fill" cx="148" cy="137" rx="22" ry="15" fill="#6B4FA8" opacity="0"/>
-          </g>
-
-          <!-- ── CHEST / TORSO with waist curve ── -->
-          <g class="zone" onclick="selectZone('chest')" id="zone-chest">
-            <!-- curved torso: wide shoulders, nip at waist, flare at hips -->
-            <path d="M62 132 Q56 120 100 118 Q144 120 138 132 Q150 155 148 178 Q138 196 120 200 Q110 205 100 205 Q90 205 80 200 Q62 196 52 178 Q50 155 62 132 Z" fill="#9B7FD4"/>
-            <path class="zone-fill" d="M62 132 Q56 120 100 118 Q144 120 138 132 Q150 155 148 178 Q138 196 120 200 Q110 205 100 205 Q90 205 80 200 Q62 196 52 178 Q50 155 62 132 Z" fill="#6B4FA8" opacity="0"/>
-          </g>
-
-          <!-- ── STOMACH / HIPS with curves ── -->
-          <g class="zone" onclick="selectZone('stomach')" id="zone-stomach">
-            <path d="M52 198 Q58 194 80 200 Q90 205 100 205 Q110 205 120 200 Q142 194 148 198 Q152 218 148 238 Q138 258 100 262 Q62 258 52 238 Q48 218 52 198 Z" fill="#B8A8D4"/>
-            <path class="zone-fill" d="M52 198 Q58 194 80 200 Q90 205 100 205 Q110 205 120 200 Q142 194 148 198 Q152 218 148 238 Q138 258 100 262 Q62 258 52 238 Q48 218 52 198 Z" fill="#9B7FD4" opacity="0"/>
-          </g>
-
-          <!-- ── HANDS ── -->
-          <g class="zone" onclick="selectZone('hands')" id="zone-hands">
-            <ellipse cx="40" cy="215" rx="14" ry="11" fill="#C8885A"/>
-            <ellipse class="zone-fill" cx="40" cy="215" rx="14" ry="11" fill="#9B7FD4" opacity="0"/>
-            <ellipse cx="160" cy="215" rx="14" ry="11" fill="#C8885A"/>
-            <ellipse class="zone-fill" cx="160" cy="215" rx="14" ry="11" fill="#9B7FD4" opacity="0"/>
-          </g>
-
-          <!-- ── LEGS — tapered, natural ── -->
+          <!-- ═══ LEGS — slight pose, left leg forward ═══ -->
           <g class="zone" onclick="selectZone('legs')" id="zone-legs">
-            <!-- left leg -->
-            <path d="M68 260 Q60 280 62 340 Q64 368 72 375 Q80 378 86 375 Q92 368 90 340 Q88 280 82 260 Z" fill="#6B4FA8"/>
-            <path class="zone-fill" d="M68 260 Q60 280 62 340 Q64 368 72 375 Q80 378 86 375 Q92 368 90 340 Q88 280 82 260 Z" fill="#4A3280" opacity="0"/>
-            <!-- right leg -->
-            <path d="M118 260 Q112 280 110 340 Q108 368 114 375 Q120 378 128 375 Q134 368 138 340 Q140 280 132 260 Z" fill="#6B4FA8"/>
-            <path class="zone-fill" d="M118 260 Q112 280 110 340 Q108 368 114 375 Q120 378 128 375 Q134 368 138 340 Q140 280 132 260 Z" fill="#4A3280" opacity="0"/>
+            <!-- left leg (forward, slight angle) -->
+            <path d="M86 300 Q80 330 78 370 Q76 400 78 420 Q80 432 88 434 Q96 436 100 432 Q104 428 104 416 Q102 395 100 370 Q98 340 96 300 Z" fill="#6B4FA8"/>
+            <path class="zone-fill" d="M86 300 Q80 330 78 370 Q76 400 78 420 Q80 432 88 434 Q96 436 100 432 Q104 428 104 416 Q102 395 100 370 Q98 340 96 300 Z" fill="#4A3280" opacity="0"/>
+            <!-- right leg (back, shifted) -->
+            <path d="M110 298 Q116 328 118 365 Q120 395 119 414 Q118 426 126 428 Q134 430 138 424 Q142 418 140 400 Q138 368 136 335 Q133 308 124 298 Z" fill="#5A4098"/>
+            <path class="zone-fill" d="M110 298 Q116 328 118 365 Q120 395 119 414 Q118 426 126 428 Q134 430 138 424 Q142 418 140 400 Q138 368 136 335 Q133 308 124 298 Z" fill="#4A3280" opacity="0"/>
+            <!-- knee shadow highlights -->
+            <ellipse cx="89" cy="368" rx="10" ry="6" fill="#4A3280" opacity="0.18"/>
+            <ellipse cx="128" cy="362" rx="10" ry="6" fill="#3A2870" opacity="0.18"/>
           </g>
 
-          <!-- ── FEET ── -->
-          <ellipse cx="74" cy="380" rx="18" ry="9" fill="#4A3280"/>
-          <ellipse cx="122" cy="380" rx="18" ry="9" fill="#4A3280"/>
+          <!-- ═══ FEET ═══ -->
+          <ellipse cx="90" cy="436" rx="16" ry="8" fill="#4A3280" transform="rotate(-5 90 436)"/>
+          <ellipse cx="130" cy="427" rx="15" ry="7" fill="#3A2870" transform="rotate(5 130 427)"/>
+          <!-- shoe highlight -->
+          <ellipse cx="86" cy="433" rx="8" ry="3" fill="#7A6AC0" opacity="0.3"/>
+
+          <!-- ═══ LEFT ARM — hand on hip ═══ -->
+          <path d="M72 158 Q48 175 42 210 Q40 232 46 248 Q50 258 58 260" stroke="#B87848" stroke-width="18" stroke-linecap="round" fill="none"/>
+          <path d="M72 158 Q48 175 42 210 Q40 232 46 248 Q50 258 58 260" stroke="#C8885A" stroke-width="15" stroke-linecap="round" fill="none"/>
+
+          <!-- ═══ RIGHT ARM — slightly raised, hand up ═══ -->
+          <path d="M148 155 Q168 170 170 200 Q172 222 164 240 Q160 250 154 256" stroke="#B87848" stroke-width="18" stroke-linecap="round" fill="none"/>
+          <path d="M148 155 Q168 170 170 200 Q172 222 164 240 Q160 250 154 256" stroke="#C8885A" stroke-width="15" stroke-linecap="round" fill="none"/>
+
+          <!-- ═══ HANDS ═══ -->
+          <g class="zone" onclick="selectZone('hands')" id="zone-hands">
+            <!-- left hand on hip -->
+            <ellipse cx="57" cy="262" rx="14" ry="10" fill="#C8885A" transform="rotate(15 57 262)"/>
+            <ellipse class="zone-fill" cx="57" cy="262" rx="14" ry="10" fill="#9B7FD4" opacity="0" transform="rotate(15 57 262)"/>
+            <!-- right hand raised -->
+            <ellipse cx="155" cy="258" rx="13" ry="10" fill="#C8885A" transform="rotate(-10 155 258)"/>
+            <ellipse class="zone-fill" cx="155" cy="258" rx="13" ry="10" fill="#9B7FD4" opacity="0" transform="rotate(-10 155 258)"/>
+            <!-- finger suggestions -->
+            <path d="M48 258 Q50 252 54 256" stroke="#B87848" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M55 256 Q56 249 60 253" stroke="#B87848" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </g>
+
+          <!-- ═══ HIPS / LOWER BODY ═══ -->
+          <g class="zone" onclick="selectZone('stomach')" id="zone-stomach">
+            <!-- wide hips, tapered to knees -->
+            <path d="M58 228 Q52 240 54 270 Q56 292 70 302 Q86 310 100 310 Q116 310 132 302 Q146 290 148 270 Q150 248 146 228 Q136 238 110 242 Q100 244 90 242 Q72 238 58 228 Z" fill="#B8A8D4"/>
+            <path class="zone-fill" d="M58 228 Q52 240 54 270 Q56 292 70 302 Q86 310 100 310 Q116 310 132 302 Q146 290 148 270 Q150 248 146 228 Q136 238 110 242 Q100 244 90 242 Q72 238 58 228 Z" fill="#9B7FD4" opacity="0"/>
+            <!-- waistband detail -->
+            <path d="M62 228 Q100 236 140 228" stroke="#9B8DC4" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.6"/>
+          </g>
+
+          <!-- ═══ TORSO — fitted top, hourglass ═══ -->
+          <g class="zone" onclick="selectZone('chest')" id="zone-chest">
+            <!-- torso shape: wide shoulders → nipped waist → hip flare -->
+            <path d="M68 148 Q56 140 58 160 Q56 185 60 210 Q64 228 90 236 Q100 238 110 236 Q136 228 142 210 Q146 188 144 162 Q146 140 152 148 Q138 130 118 128 Q108 126 100 126 Q88 126 78 128 Z" fill="#9B7FD4"/>
+            <path class="zone-fill" d="M68 148 Q56 140 58 160 Q56 185 60 210 Q64 228 90 236 Q100 238 110 236 Q136 228 142 210 Q146 188 144 162 Q146 140 152 148 Q138 130 118 128 Q108 126 100 126 Q88 126 78 128 Z" fill="#6B4FA8" opacity="0"/>
+            <!-- neckline curve of top -->
+            <path d="M80 130 Q100 140 120 130" stroke="#8B6FC0" stroke-width="2" fill="none" opacity="0.5"/>
+            <!-- waist pinch shadow -->
+            <path d="M60 200 Q72 208 90 210" stroke="#8060B8" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.25"/>
+            <path d="M140 200 Q128 208 110 210" stroke="#8060B8" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.25"/>
+          </g>
+
+          <!-- ═══ SHOULDERS ═══ -->
+          <g class="zone" onclick="selectZone('shoulders')" id="zone-shoulders">
+            <path d="M58 148 Q44 145 42 158 Q40 170 52 175 Q62 178 70 170 Q74 162 68 152 Z" fill="#8B7AC4" opacity="0.75"/>
+            <ellipse class="zone-fill" cx="56" cy="160" rx="16" ry="13" fill="#6B4FA8" opacity="0"/>
+            <path d="M152 148 Q166 145 168 158 Q170 170 158 175 Q148 178 140 170 Q136 162 142 152 Z" fill="#8B7AC4" opacity="0.75"/>
+            <ellipse class="zone-fill" cx="154" cy="160" rx="16" ry="13" fill="#6B4FA8" opacity="0"/>
+          </g>
+
+          <!-- ═══ NECK ═══ -->
+          <g class="zone" onclick="selectZone('throat')" id="zone-throat">
+            <path d="M88 116 Q86 126 88 134 Q94 140 100 140 Q106 140 112 134 Q114 126 112 116 Q106 120 100 120 Q94 120 88 116 Z" fill="#C8885A"/>
+            <path class="zone-fill" d="M88 116 Q86 126 88 134 Q94 140 100 140 Q106 140 112 134 Q114 126 112 116 Q106 120 100 120 Q94 120 88 116 Z" fill="#9B7FD4" opacity="0"/>
+            <!-- collarbone suggestion -->
+            <path d="M78 136 Q88 130 100 132 Q112 130 124 136" stroke="#B87848" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4"/>
+          </g>
+
+          <!-- ═══ HEAD ═══ -->
+          <g class="zone" onclick="selectZone('head')" id="zone-head">
+            <!-- face shape — slightly oval, feminine jaw -->
+            <path d="M72 94 Q70 76 80 66 Q90 56 100 56 Q112 56 120 66 Q130 76 128 94 Q126 110 118 118 Q110 124 100 124 Q90 124 82 118 Q74 110 72 94 Z" fill="#C8885A"/>
+            <path class="zone-fill" d="M72 94 Q70 76 80 66 Q90 56 100 56 Q112 56 120 66 Q130 76 128 94 Q126 110 118 118 Q110 124 100 124 Q90 124 82 118 Q74 110 72 94 Z" fill="#9B7FD4" opacity="0"/>
+            <!-- ear suggestions -->
+            <ellipse cx="70" cy="92" rx="5" ry="7" fill="#B87848"/>
+            <ellipse cx="130" cy="92" rx="5" ry="7" fill="#B87848"/>
+            <!-- eyebrows — defined arches -->
+            <path d="M80 82 Q88 76 96 80" stroke="#3A1A08" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            <path d="M104 80 Q112 76 120 82" stroke="#3A1A08" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            <!-- OVAL GLASSES -->
+            <ellipse cx="88" cy="89" rx="11" ry="7" fill="none" stroke="#1A1010" stroke-width="2.2"/>
+            <ellipse cx="112" cy="89" rx="11" ry="7" fill="none" stroke="#1A1010" stroke-width="2.2"/>
+            <line x1="99" y1="89" x2="101" y2="89" stroke="#1A1010" stroke-width="1.5"/>
+            <line x1="77" y1="87" x2="70" y2="84" stroke="#1A1010" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="123" y1="87" x2="130" y2="84" stroke="#1A1010" stroke-width="1.5" stroke-linecap="round"/>
+            <ellipse cx="88" cy="89" rx="9" ry="5.5" fill="#A898B8" opacity="0.22"/>
+            <ellipse cx="112" cy="89" rx="9" ry="5.5" fill="#A898B8" opacity="0.22"/>
+            <!-- eyes behind glasses -->
+            <circle cx="88" cy="89" r="3.5" fill="#2A1008"/>
+            <circle cx="112" cy="89" r="3.5" fill="#2A1008"/>
+            <circle cx="89.5" cy="87.5" r="1.2" fill="white" opacity="0.8"/>
+            <circle cx="113.5" cy="87.5" r="1.2" fill="white" opacity="0.8"/>
+            <!-- nose — subtle -->
+            <path d="M96 98 Q100 103 104 98" stroke="#9A6030" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+            <ellipse cx="96" cy="99" rx="2" ry="1.5" fill="#B87848" opacity="0.25"/>
+            <ellipse cx="104" cy="99" rx="2" ry="1.5" fill="#B87848" opacity="0.25"/>
+            <!-- lips -->
+            <path d="M88 110 Q94 107 100 108 Q106 107 112 110" stroke="#A05840" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M88 110 Q100 117 112 110" stroke="#A05840" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+            <path d="M92 110 Q100 113 108 110" fill="#C07060" opacity="0.35"/>
+            <!-- cheeks -->
+            <ellipse cx="78" cy="103" rx="8" ry="5" fill="#E8906A" opacity="0.22"/>
+            <ellipse cx="122" cy="103" rx="8" ry="5" fill="#E8906A" opacity="0.22"/>
+          </g>
+
+          <!-- ═══ HAIR — voluminous burgundy curls ═══ -->
+          <!-- back volume -->
+          <ellipse cx="100" cy="60" rx="58" ry="52" fill="#5A1522"/>
+          <!-- curl mass -->
+          <circle cx="56" cy="70" r="24" fill="#6B1A2A"/>
+          <circle cx="50" cy="50" r="22" fill="#7D1F32"/>
+          <circle cx="58" cy="30" r="22" fill="#6B1A2A"/>
+          <circle cx="74" cy="16" r="22" fill="#7D1F32"/>
+          <circle cx="92" cy="8" r="23" fill="#6B1A2A"/>
+          <circle cx="110" cy="8" r="23" fill="#7D1F32"/>
+          <circle cx="128" cy="16" r="22" fill="#6B1A2A"/>
+          <circle cx="144" cy="30" r="22" fill="#7D1F32"/>
+          <circle cx="150" cy="50" r="22" fill="#6B1A2A"/>
+          <circle cx="144" cy="70" r="24" fill="#7D1F32"/>
+          <circle cx="130" cy="80" r="17" fill="#6B1A2A"/>
+          <circle cx="70" cy="80" r="17" fill="#7D1F32"/>
+          <!-- front curl detail -->
+          <circle cx="80" cy="60" r="14" fill="#7D1F32"/>
+          <circle cx="120" cy="60" r="14" fill="#6B1A2A"/>
+          <circle cx="100" cy="52" r="16" fill="#7D1F32"/>
+          <!-- shine -->
+          <ellipse cx="84" cy="28" rx="16" ry="8" fill="#9B2A40" opacity="0.5" transform="rotate(-22 84 28)"/>
+          <ellipse cx="118" cy="22" rx="13" ry="7" fill="#9B2A40" opacity="0.4" transform="rotate(18 118 22)"/>
 
           <!-- tap hint pulse -->
-          <circle id="tap-hint" cx="100" cy="165" r="18" fill="none" stroke="#C9B8E8" stroke-width="1.5" opacity="0.5">
+          <circle id="tap-hint" cx="100" cy="200" r="18" fill="none" stroke="#C9B8E8" stroke-width="1.5" opacity="0.5">
             <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.5;0;0.5" dur="2.5s" repeatCount="indefinite"/>
           </circle>
