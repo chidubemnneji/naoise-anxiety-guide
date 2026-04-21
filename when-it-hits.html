@@ -118,6 +118,10 @@
   .fw-slice:hover { opacity: 0.82; filter: brightness(1.08); }
   .fw-slice.active { filter: brightness(1.15) drop-shadow(0 0 6px rgba(0,0,0,0.18)); }
   .fw-label-core { font-family: 'Fraunces', serif; font-size: 11px; fill: white; font-weight: 600; pointer-events: none; }
+  
+  .fw-label-outer { font-family: 'Nunito', sans-serif; font-size: 7px; fill: #1A1010; pointer-events: none; font-weight: 700; }
+  .fw-label-mid { font-family: 'Nunito', sans-serif; font-size: 8.5px; fill: white; pointer-events: none; font-weight: 700; }
+  .fw-label-core { font-family: 'Fraunces', serif; font-size: 10px; fill: white; pointer-events: none; font-weight: 600; }
   .fw-centre-main { font-family: 'Fraunces', serif; font-size: 18px; fill: #6B4FA8; font-weight: 400; }
   .fw-centre-hint { font-family: 'Nunito', sans-serif; font-size: 11px; fill: #9B7FD4; }
   .fw-result { margin-top: 24px; padding: 20px; background: white; border-radius: 18px; border: 1.5px solid #E0D4F0; text-align: center; animation: fadeUp 0.4s ease; }
@@ -448,82 +452,118 @@
     <div class="body-map-sub">Start from the centre. Work outward.</div>
     <div class="feeling-wheel-wrap">
       <svg id="feeling-wheel" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- ── CORE emotions (innermost ring) ── -->
-        <!-- SAD -->
-        <path id="core-sad" class="fw-slice fw-core" d="M200 200 L200 80 A120 120 0 0 0 96 140 Z" fill="#7B8CDE" onclick="selectCore('sad')"/>
-        <!-- ANGRY -->
-        <path id="core-angry" class="fw-slice fw-core" d="M200 200 L96 140 A120 120 0 0 0 96 260 Z" fill="#E07B6A" onclick="selectCore('angry')"/>
-        <!-- DISGUSTED -->
-        <path id="core-disgusted" class="fw-slice fw-core" d="M200 200 L96 260 A120 120 0 0 0 200 320 Z" fill="#8DBB7A" onclick="selectCore('disgusted')"/>
-        <!-- AFRAID -->
-        <path id="core-afraid" class="fw-slice fw-core" d="M200 200 L200 320 A120 120 0 0 0 304 260 Z" fill="#B89AD4" onclick="selectCore('afraid')"/>
-        <!-- HAPPY -->
-        <path id="core-happy" class="fw-slice fw-core" d="M200 200 L304 260 A120 120 0 0 0 304 140 Z" fill="#F2C46A" onclick="selectCore('happy')"/>
-        <!-- SURPRISED -->
-        <path id="core-surprised" class="fw-slice fw-core" d="M200 200 L304 140 A120 120 0 0 0 200 80 Z" fill="#F4A06A" onclick="selectCore('surprised')"/>
-
-        <!-- Core labels -->
-        <text class="fw-label-core" x="168" y="118" transform="rotate(-60 200 200)" text-anchor="middle">Sad</text>
-        <text class="fw-label-core" x="168" y="118" transform="rotate(-120 200 200)" text-anchor="middle">Angry</text>
-        <text class="fw-label-core" x="168" y="118" transform="rotate(-180 200 200)" text-anchor="middle">Disgusted</text>
-        <text class="fw-label-core" x="168" y="118" transform="rotate(-240 200 200)" text-anchor="middle">Afraid</text>
-        <text class="fw-label-core" x="168" y="118" transform="rotate(-300 200 200)" text-anchor="middle">Happy</text>
-        <text class="fw-label-core" x="168" y="118" transform="rotate(0 200 200)" text-anchor="middle">Surprised</text>
-
-        <!-- ── MID ring ── -->
-        <!-- SAD mid -->
-        <path class="fw-slice fw-mid" data-core="sad" d="M200 200 L200 80 A120 120 0 0 0 148 90 Z" fill="#9AAAE8" onclick="selectMid('lonely','sad')"/>
-        <path class="fw-slice fw-mid" data-core="sad" d="M200 200 L148 90 A120 120 0 0 0 96 140 Z" fill="#8898DE" onclick="selectMid('vulnerable','sad')"/>
-        <!-- ANGRY mid -->
-        <path class="fw-slice fw-mid" data-core="angry" d="M200 200 L96 140 A120 120 0 0 0 80 200 Z" fill="#E89080" onclick="selectMid('hurt','angry')"/>
-        <path class="fw-slice fw-mid" data-core="angry" d="M200 200 L80 200 A120 120 0 0 0 96 260 Z" fill="#E07060" onclick="selectMid('threatened','angry')"/>
-        <!-- DISGUSTED mid -->
-        <path class="fw-slice fw-mid" data-core="disgusted" d="M200 200 L96 260 A120 120 0 0 0 148 310 Z" fill="#A4CC90" onclick="selectMid('awful','disgusted')"/>
-        <path class="fw-slice fw-mid" data-core="disgusted" d="M200 200 L148 310 A120 120 0 0 0 200 320 Z" fill="#8EBB78" onclick="selectMid('disapproval','disgusted')"/>
-        <!-- AFRAID mid -->
-        <path class="fw-slice fw-mid" data-core="afraid" d="M200 200 L200 320 A120 120 0 0 0 252 310 Z" fill="#C4A8E0" onclick="selectMid('rejected','afraid')"/>
-        <path class="fw-slice fw-mid" data-core="afraid" d="M200 200 L252 310 A120 120 0 0 0 304 260 Z" fill="#A888CC" onclick="selectMid('scared','afraid')"/>
-        <!-- HAPPY mid -->
-        <path class="fw-slice fw-mid" data-core="happy" d="M200 200 L304 260 A120 120 0 0 0 320 200 Z" fill="#F8D080" onclick="selectMid('playful','happy')"/>
-        <path class="fw-slice fw-mid" data-core="happy" d="M200 200 L320 200 A120 120 0 0 0 304 140 Z" fill="#F2C050" onclick="selectMid('content','happy')"/>
-        <!-- SURPRISED mid -->
-        <path class="fw-slice fw-mid" data-core="surprised" d="M200 200 L304 140 A120 120 0 0 0 252 90 Z" fill="#F8B888" onclick="selectMid('excited','surprised')"/>
-        <path class="fw-slice fw-mid" data-core="surprised" d="M200 200 L252 90 A120 120 0 0 0 200 80 Z" fill="#F49860" onclick="selectMid('confused','surprised')"/>
-
-        <!-- ── OUTER ring ── -->
-        <!-- Outer SAD -->
-        <path class="fw-slice fw-outer" data-core="sad" d="M200 200 L200 20 A180 180 0 0 0 155 30 Z" fill="#B8C4F4" onclick="selectOuter('isolated')"/>
-        <path class="fw-slice fw-outer" data-core="sad" d="M200 200 L155 30 A180 180 0 0 0 110 60 Z" fill="#A8B4EC" onclick="selectOuter('abandoned')"/>
-        <path class="fw-slice fw-outer" data-core="sad" d="M200 200 L110 60 A180 180 0 0 0 62 105 Z" fill="#98A4E4" onclick="selectOuter('fragile')"/>
-        <path class="fw-slice fw-outer" data-core="sad" d="M200 200 L62 105 A180 180 0 0 0 20 155 Z" fill="#8898DC" onclick="selectOuter('grief')"/>
-        <!-- Outer ANGRY -->
-        <path class="fw-slice fw-outer" data-core="angry" d="M200 200 L20 155 A180 180 0 0 0 20 200 Z" fill="#F0A898" onclick="selectOuter('furious')"/>
-        <path class="fw-slice fw-outer" data-core="angry" d="M200 200 L20 200 A180 180 0 0 0 20 245 Z" fill="#E89888" onclick="selectOuter('jealous')"/>
-        <path class="fw-slice fw-outer" data-core="angry" d="M200 200 L20 245 A180 180 0 0 0 62 295 Z" fill="#E08878" onclick="selectOuter('frustrated')"/>
-        <path class="fw-slice fw-outer" data-core="angry" d="M200 200 L62 295 A180 180 0 0 0 110 340 Z" fill="#D87868" onclick="selectOuter('critical')"/>
-        <!-- Outer DISGUSTED -->
-        <path class="fw-slice fw-outer" data-core="disgusted" d="M200 200 L110 340 A180 180 0 0 0 155 368 Z" fill="#BCDEAC" onclick="selectOuter('repelled')"/>
-        <path class="fw-slice fw-outer" data-core="disgusted" d="M200 200 L155 368 A180 180 0 0 0 200 380 Z" fill="#ACCE9C" onclick="selectOuter('judgemental')"/>
-        <path class="fw-slice fw-outer" data-core="disgusted" d="M200 200 L200 380 A180 180 0 0 0 245 368 Z" fill="#9CBE8C" onclick="selectOuter('embarrassed')"/>
-        <!-- Outer AFRAID -->
-        <path class="fw-slice fw-outer" data-core="afraid" d="M200 200 L245 368 A180 180 0 0 0 290 340 Z" fill="#D4B8EC" onclick="selectOuter('humiliated')"/>
-        <path class="fw-slice fw-outer" data-core="afraid" d="M200 200 L290 340 A180 180 0 0 0 338 295 Z" fill="#C4A8DC" onclick="selectOuter('inferior')"/>
-        <path class="fw-slice fw-outer" data-core="afraid" d="M200 200 L338 295 A180 180 0 0 0 380 245 Z" fill="#B498CC" onclick="selectOuter('overwhelmed')"/>
-        <path class="fw-slice fw-outer" data-core="afraid" d="M200 200 L380 245 A180 180 0 0 0 380 200 Z" fill="#A488BC" onclick="selectOuter('anxious')"/>
-        <!-- Outer HAPPY -->
-        <path class="fw-slice fw-outer" data-core="happy" d="M200 200 L380 200 A180 180 0 0 0 380 155 Z" fill="#FCDFA0" onclick="selectOuter('energetic')"/>
-        <path class="fw-slice fw-outer" data-core="happy" d="M200 200 L380 155 A180 180 0 0 0 338 105 Z" fill="#FAD080" onclick="selectOuter('joyful')"/>
-        <path class="fw-slice fw-outer" data-core="happy" d="M200 200 L338 105 A180 180 0 0 0 290 60 Z" fill="#F8C060" onclick="selectOuter('grateful')"/>
-        <path class="fw-slice fw-outer" data-core="happy" d="M200 200 L290 60 A180 180 0 0 0 245 30 Z" fill="#F6B040" onclick="selectOuter('hopeful')"/>
-        <!-- Outer SURPRISED -->
-        <path class="fw-slice fw-outer" data-core="surprised" d="M200 200 L245 30 A180 180 0 0 0 200 20 Z" fill="#FCD0A8" onclick="selectOuter('amazed')"/>
-        <path class="fw-slice fw-outer" data-core="surprised" d="M200 200 L200 20 A180 180 0 0 0 155 30 Z" fill="#FAB888" onclick="selectOuter('confused2')"/>
-
-        <!-- Centre circle -->
-        <circle cx="200" cy="200" r="48" fill="white" opacity="0.92"/>
-        <text id="fw-centre-label" x="200" y="196" text-anchor="middle" class="fw-centre-main">How</text>
-        <text id="fw-centre-sub" x="200" y="214" text-anchor="middle" class="fw-centre-hint">do you feel?</text>
-      </svg>
+<path class="fw-slice fw-outer" data-core="happy" d="M 200.0 10.0 A 190 190 0 0 1 233.0 12.9 L 224.3 62.1 A 140 140 0 0 0 200.0 60.0 Z" fill="#88D898" onclick="selectOuter('excited', 'Excited')"/>
+<text class="fw-label-outer" x="214.4" y="35.6" text-anchor="middle" dominant-baseline="middle" transform="rotate(-175.0 214.4 35.6)">Excited</text>
+<path class="fw-slice fw-outer" data-core="happy" d="M 233.0 12.9 A 190 190 0 0 1 265.0 21.5 L 247.9 68.4 A 140 140 0 0 0 224.3 62.1 Z" fill="#78C888" onclick="selectOuter('enthusiastic', 'Enthusiastic')"/>
+<text class="fw-label-outer" x="242.7" y="40.6" text-anchor="middle" dominant-baseline="middle" transform="rotate(-165.0 242.7 40.6)">Enthusiastic</text>
+<path class="fw-slice fw-outer" data-core="happy" d="M 265.0 21.5 A 190 190 0 0 1 295.0 35.5 L 270.0 78.8 A 140 140 0 0 0 247.9 68.4 Z" fill="#68B878" onclick="selectOuter('eager', 'Eager')"/>
+<text class="fw-label-outer" x="269.7" y="50.5" text-anchor="middle" dominant-baseline="middle" transform="rotate(-155.0 269.7 50.5)">Eager</text>
+<path class="fw-slice fw-outer" data-core="happy" d="M 295.0 35.5 A 190 190 0 0 1 322.1 54.5 L 290.0 92.8 A 140 140 0 0 0 270.0 78.8 Z" fill="#68C47C" onclick="selectOuter('hopeful', 'Hopeful')"/>
+<text class="fw-label-outer" x="294.6" y="64.8" text-anchor="middle" dominant-baseline="middle" transform="rotate(-145.0 294.6 64.8)">Hopeful</text>
+<path class="fw-slice fw-outer" data-core="happy" d="M 322.1 54.5 A 190 190 0 0 1 345.5 77.9 L 307.2 110.0 A 140 140 0 0 0 290.0 92.8 Z" fill="#58B46C" onclick="selectOuter('proud', 'Proud')"/>
+<text class="fw-label-outer" x="316.7" y="83.3" text-anchor="middle" dominant-baseline="middle" transform="rotate(-135.0 316.7 83.3)">Proud</text>
+<path class="fw-slice fw-outer" data-core="happy" d="M 345.5 77.9 A 190 190 0 0 1 364.5 105.0 L 321.2 130.0 A 140 140 0 0 0 307.2 110.0 Z" fill="#48A45C" onclick="selectOuter('cheerful', 'Cheerful')"/>
+<text class="fw-label-outer" x="335.2" y="105.4" text-anchor="middle" dominant-baseline="middle" transform="rotate(-125.0 335.2 105.4)">Cheerful</text>
+<path class="fw-slice fw-outer" data-core="surprise" d="M 364.5 105.0 A 190 190 0 0 1 378.5 135.0 L 331.6 152.1 A 140 140 0 0 0 321.2 130.0 Z" fill="#80B4E4" onclick="selectOuter('startled', 'Startled')"/>
+<text class="fw-label-outer" x="349.5" y="130.3" text-anchor="middle" dominant-baseline="middle" transform="rotate(-115.0 349.5 130.3)">Startled</text>
+<path class="fw-slice fw-outer" data-core="surprise" d="M 378.5 135.0 A 190 190 0 0 1 387.1 167.0 L 337.9 175.7 A 140 140 0 0 0 331.6 152.1 Z" fill="#70A4D4" onclick="selectOuter('awe_struck', 'Awe-struck')"/>
+<text class="fw-label-outer" x="359.4" y="157.3" text-anchor="middle" dominant-baseline="middle" transform="rotate(-105.0 359.4 157.3)">Awe-struck</text>
+<path class="fw-slice fw-outer" data-core="surprise" d="M 387.1 167.0 A 190 190 0 0 1 390.0 200.0 L 340.0 200.0 A 140 140 0 0 0 337.9 175.7 Z" fill="#6094C4" onclick="selectOuter('moved', 'Moved')"/>
+<text class="fw-label-outer" x="364.4" y="185.6" text-anchor="middle" dominant-baseline="middle" transform="rotate(-95.0 364.4 185.6)">Moved</text>
+<path class="fw-slice fw-outer" data-core="surprise" d="M 390.0 200.0 A 190 190 0 0 1 387.1 233.0 L 337.9 224.3 A 140 140 0 0 0 340.0 200.0 Z" fill="#6898CC" onclick="selectOuter('shocked', 'Shocked')"/>
+<text class="fw-label-outer" x="364.4" y="214.4" text-anchor="middle" dominant-baseline="middle" transform="rotate(-85.0 364.4 214.4)">Shocked</text>
+<path class="fw-slice fw-outer" data-core="surprise" d="M 387.1 233.0 A 190 190 0 0 1 378.5 265.0 L 331.6 247.9 A 140 140 0 0 0 337.9 224.3 Z" fill="#5888BC" onclick="selectOuter('speechless', 'Speechless')"/>
+<text class="fw-label-outer" x="359.4" y="242.7" text-anchor="middle" dominant-baseline="middle" transform="rotate(-75.0 359.4 242.7)">Speechless</text>
+<path class="fw-slice fw-outer" data-core="surprise" d="M 378.5 265.0 A 190 190 0 0 1 364.5 295.0 L 321.2 270.0 A 140 140 0 0 0 331.6 247.9 Z" fill="#4878AC" onclick="selectOuter('bewildered', 'Bewildered')"/>
+<text class="fw-label-outer" x="349.5" y="269.7" text-anchor="middle" dominant-baseline="middle" transform="rotate(-65.0 349.5 269.7)">Bewildered</text>
+<path class="fw-slice fw-outer" data-core="peaceful" d="M 364.5 295.0 A 190 190 0 0 1 345.5 322.1 L 307.2 290.0 A 140 140 0 0 0 321.2 270.0 Z" fill="#F8DC78" onclick="selectOuter('calm', 'Calm')"/>
+<text class="fw-label-outer" x="335.2" y="294.6" text-anchor="middle" dominant-baseline="middle" transform="rotate(-55.0 335.2 294.6)">Calm</text>
+<path class="fw-slice fw-outer" data-core="peaceful" d="M 345.5 322.1 A 190 190 0 0 1 322.1 345.5 L 290.0 307.2 A 140 140 0 0 0 307.2 290.0 Z" fill="#F0CC68" onclick="selectOuter('affectionate', 'Affectionate')"/>
+<text class="fw-label-outer" x="316.7" y="316.7" text-anchor="middle" dominant-baseline="middle" transform="rotate(-45.0 316.7 316.7)">Affectionate</text>
+<path class="fw-slice fw-outer" data-core="peaceful" d="M 322.1 345.5 A 190 190 0 0 1 295.0 364.5 L 270.0 321.2 A 140 140 0 0 0 290.0 307.2 Z" fill="#E8BC58" onclick="selectOuter('caring', 'Caring')"/>
+<text class="fw-label-outer" x="294.6" y="335.2" text-anchor="middle" dominant-baseline="middle" transform="rotate(-35.0 294.6 335.2)">Caring</text>
+<path class="fw-slice fw-outer" data-core="peaceful" d="M 295.0 364.5 A 190 190 0 0 1 265.0 378.5 L 247.9 331.6 A 140 140 0 0 0 270.0 321.2 Z" fill="#E8C048" onclick="selectOuter('relaxed', 'Relaxed')"/>
+<text class="fw-label-outer" x="269.7" y="349.5" text-anchor="middle" dominant-baseline="middle" transform="rotate(-25.0 269.7 349.5)">Relaxed</text>
+<path class="fw-slice fw-outer" data-core="peaceful" d="M 265.0 378.5 A 190 190 0 0 1 233.0 387.1 L 224.3 337.9 A 140 140 0 0 0 247.9 331.6 Z" fill="#D8B038" onclick="selectOuter('inspired', 'Inspired')"/>
+<text class="fw-label-outer" x="242.7" y="359.4" text-anchor="middle" dominant-baseline="middle" transform="rotate(-15.0 242.7 359.4)">Inspired</text>
+<path class="fw-slice fw-outer" data-core="peaceful" d="M 233.0 387.1 A 190 190 0 0 1 200.0 390.0 L 200.0 340.0 A 140 140 0 0 0 224.3 337.9 Z" fill="#C8A028" onclick="selectOuter('valued', 'Valued')"/>
+<text class="fw-label-outer" x="214.4" y="364.4" text-anchor="middle" dominant-baseline="middle" transform="rotate(-5.0 214.4 364.4)">Valued</text>
+<path class="fw-slice fw-outer" data-core="sad" d="M 200.0 390.0 A 190 190 0 0 1 167.0 387.1 L 175.7 337.9 A 140 140 0 0 0 200.0 340.0 Z" fill="#AABAE8" onclick="selectOuter('isolated', 'Isolated')"/>
+<text class="fw-label-outer" x="185.6" y="364.4" text-anchor="middle" dominant-baseline="middle" transform="rotate(185.0 185.6 364.4)">Isolated</text>
+<path class="fw-slice fw-outer" data-core="sad" d="M 167.0 387.1 A 190 190 0 0 1 135.0 378.5 L 152.1 331.6 A 140 140 0 0 0 175.7 337.9 Z" fill="#9AAAD8" onclick="selectOuter('abandoned', 'Abandoned')"/>
+<text class="fw-label-outer" x="157.3" y="359.4" text-anchor="middle" dominant-baseline="middle" transform="rotate(195.0 157.3 359.4)">Abandoned</text>
+<path class="fw-slice fw-outer" data-core="sad" d="M 135.0 378.5 A 190 190 0 0 1 105.0 364.5 L 130.0 321.2 A 140 140 0 0 0 152.1 331.6 Z" fill="#8A9AC8" onclick="selectOuter('inferior', 'Inferior')"/>
+<text class="fw-label-outer" x="130.3" y="349.5" text-anchor="middle" dominant-baseline="middle" transform="rotate(205.0 130.3 349.5)">Inferior</text>
+<path class="fw-slice fw-outer" data-core="sad" d="M 105.0 364.5 A 190 190 0 0 1 77.9 345.5 L 110.0 307.2 A 140 140 0 0 0 130.0 321.2 Z" fill="#9AA8D8" onclick="selectOuter('depressed', 'Depressed')"/>
+<text class="fw-label-outer" x="105.4" y="335.2" text-anchor="middle" dominant-baseline="middle" transform="rotate(215.0 105.4 335.2)">Depressed</text>
+<path class="fw-slice fw-outer" data-core="sad" d="M 77.9 345.5 A 190 190 0 0 1 54.5 322.1 L 92.8 290.0 A 140 140 0 0 0 110.0 307.2 Z" fill="#8A98C8" onclick="selectOuter('hopeless', 'Hopeless')"/>
+<text class="fw-label-outer" x="83.3" y="316.7" text-anchor="middle" dominant-baseline="middle" transform="rotate(225.0 83.3 316.7)">Hopeless</text>
+<path class="fw-slice fw-outer" data-core="sad" d="M 54.5 322.1 A 190 190 0 0 1 35.5 295.0 L 78.8 270.0 A 140 140 0 0 0 92.8 290.0 Z" fill="#7A88B8" onclick="selectOuter('miserable', 'Miserable')"/>
+<text class="fw-label-outer" x="64.8" y="294.6" text-anchor="middle" dominant-baseline="middle" transform="rotate(235.0 64.8 294.6)">Miserable</text>
+<path class="fw-slice fw-outer" data-core="angry" d="M 35.5 295.0 A 190 190 0 0 1 21.5 265.0 L 68.4 247.9 A 140 140 0 0 0 78.8 270.0 Z" fill="#E87868" onclick="selectOuter('enraged', 'Enraged')"/>
+<text class="fw-label-outer" x="50.5" y="269.7" text-anchor="middle" dominant-baseline="middle" transform="rotate(245.0 50.5 269.7)">Enraged</text>
+<path class="fw-slice fw-outer" data-core="angry" d="M 21.5 265.0 A 190 190 0 0 1 12.9 233.0 L 62.1 224.3 A 140 140 0 0 0 68.4 247.9 Z" fill="#D86858" onclick="selectOuter('hostile', 'Hostile')"/>
+<text class="fw-label-outer" x="40.6" y="242.7" text-anchor="middle" dominant-baseline="middle" transform="rotate(255.0 40.6 242.7)">Hostile</text>
+<path class="fw-slice fw-outer" data-core="angry" d="M 12.9 233.0 A 190 190 0 0 1 10.0 200.0 L 60.0 200.0 A 140 140 0 0 0 62.1 224.3 Z" fill="#C85848" onclick="selectOuter('hateful', 'Hateful')"/>
+<text class="fw-label-outer" x="35.6" y="214.4" text-anchor="middle" dominant-baseline="middle" transform="rotate(265.0 35.6 214.4)">Hateful</text>
+<path class="fw-slice fw-outer" data-core="angry" d="M 10.0 200.0 A 190 190 0 0 1 12.9 167.0 L 62.1 175.7 A 140 140 0 0 0 60.0 200.0 Z" fill="#D86458" onclick="selectOuter('mad', 'Mad')"/>
+<text class="fw-label-outer" x="35.6" y="185.6" text-anchor="middle" dominant-baseline="middle" transform="rotate(275.0 35.6 185.6)">Mad</text>
+<path class="fw-slice fw-outer" data-core="angry" d="M 12.9 167.0 A 190 190 0 0 1 21.5 135.0 L 68.4 152.1 A 140 140 0 0 0 62.1 175.7 Z" fill="#C85448" onclick="selectOuter('offended', 'Offended')"/>
+<text class="fw-label-outer" x="40.6" y="157.3" text-anchor="middle" dominant-baseline="middle" transform="rotate(285.0 40.6 157.3)">Offended</text>
+<path class="fw-slice fw-outer" data-core="angry" d="M 21.5 135.0 A 190 190 0 0 1 35.5 105.0 L 78.8 130.0 A 140 140 0 0 0 68.4 152.1 Z" fill="#B84438" onclick="selectOuter('frustrated', 'Frustrated')"/>
+<text class="fw-label-outer" x="50.5" y="130.3" text-anchor="middle" dominant-baseline="middle" transform="rotate(295.0 50.5 130.3)">Frustrated</text>
+<path class="fw-slice fw-outer" data-core="fear" d="M 35.5 105.0 A 190 190 0 0 1 54.5 77.9 L 92.8 110.0 A 140 140 0 0 0 78.8 130.0 Z" fill="#E8A888" onclick="selectOuter('scared', 'Scared')"/>
+<text class="fw-label-outer" x="64.8" y="105.4" text-anchor="middle" dominant-baseline="middle" transform="rotate(305.0 64.8 105.4)">Scared</text>
+<path class="fw-slice fw-outer" data-core="fear" d="M 54.5 77.9 A 190 190 0 0 1 77.9 54.5 L 110.0 92.8 A 140 140 0 0 0 92.8 110.0 Z" fill="#D89878" onclick="selectOuter('overwhelmed', 'Overwhelmed')"/>
+<text class="fw-label-outer" x="83.3" y="83.3" text-anchor="middle" dominant-baseline="middle" transform="rotate(315.0 83.3 83.3)">Overwhelmed</text>
+<path class="fw-slice fw-outer" data-core="fear" d="M 77.9 54.5 A 190 190 0 0 1 105.0 35.5 L 130.0 78.8 A 140 140 0 0 0 110.0 92.8 Z" fill="#C88868" onclick="selectOuter('embarrassed', 'Embarrassed')"/>
+<text class="fw-label-outer" x="105.4" y="64.8" text-anchor="middle" dominant-baseline="middle" transform="rotate(325.0 105.4 64.8)">Embarrassed</text>
+<path class="fw-slice fw-outer" data-core="fear" d="M 105.0 35.5 A 190 190 0 0 1 135.0 21.5 L 152.1 68.4 A 140 140 0 0 0 130.0 78.8 Z" fill="#E89878" onclick="selectOuter('worried', 'Worried')"/>
+<text class="fw-label-outer" x="130.3" y="50.5" text-anchor="middle" dominant-baseline="middle" transform="rotate(335.0 130.3 50.5)">Worried</text>
+<path class="fw-slice fw-outer" data-core="fear" d="M 135.0 21.5 A 190 190 0 0 1 167.0 12.9 L 175.7 62.1 A 140 140 0 0 0 152.1 68.4 Z" fill="#D88868" onclick="selectOuter('insecure', 'Insecure')"/>
+<text class="fw-label-outer" x="157.3" y="40.6" text-anchor="middle" dominant-baseline="middle" transform="rotate(345.0 157.3 40.6)">Insecure</text>
+<path class="fw-slice fw-outer" data-core="fear" d="M 167.0 12.9 A 190 190 0 0 1 200.0 10.0 L 200.0 60.0 A 140 140 0 0 0 175.7 62.1 Z" fill="#C87858" onclick="selectOuter('shy', 'Shy')"/>
+<text class="fw-label-outer" x="185.6" y="35.6" text-anchor="middle" dominant-baseline="middle" transform="rotate(355.0 185.6 35.6)">Shy</text>
+<path class="fw-slice fw-mid" data-core="happy" d="M 200.0 60.0 A 140 140 0 0 1 270.0 78.8 L 245.0 122.1 A 90 90 0 0 0 200.0 110.0 Z" fill="#6DC47F" onclick="selectMid('joyful', 'Joyful', 'happy')"/>
+<text class="fw-label-mid" x="229.8" y="88.9" text-anchor="middle" dominant-baseline="middle" transform="rotate(-165.0 229.8 88.9)">Joyful</text>
+<path class="fw-slice fw-mid" data-core="happy" d="M 270.0 78.8 A 140 140 0 0 1 321.2 130.0 L 277.9 155.0 A 90 90 0 0 0 245.0 122.1 Z" fill="#5BB46F" onclick="selectMid('content', 'Content', 'happy')"/>
+<text class="fw-label-mid" x="281.3" y="118.7" text-anchor="middle" dominant-baseline="middle" transform="rotate(-135.0 281.3 118.7)">Content</text>
+<path class="fw-slice fw-mid" data-core="surprise" d="M 321.2 130.0 A 140 140 0 0 1 340.0 200.0 L 290.0 200.0 A 90 90 0 0 0 277.9 155.0 Z" fill="#6B9FD4" onclick="selectMid('amazed', 'Amazed', 'surprise')"/>
+<text class="fw-label-mid" x="311.1" y="170.2" text-anchor="middle" dominant-baseline="middle" transform="rotate(-105.0 311.1 170.2)">Amazed</text>
+<path class="fw-slice fw-mid" data-core="surprise" d="M 340.0 200.0 A 140 140 0 0 1 321.2 270.0 L 277.9 245.0 A 90 90 0 0 0 290.0 200.0 Z" fill="#5B8FC4" onclick="selectMid('confused', 'Confused', 'surprise')"/>
+<text class="fw-label-mid" x="311.1" y="229.8" text-anchor="middle" dominant-baseline="middle" transform="rotate(-75.0 311.1 229.8)">Confused</text>
+<path class="fw-slice fw-mid" data-core="peaceful" d="M 321.2 270.0 A 140 140 0 0 1 270.0 321.2 L 245.0 277.9 A 90 90 0 0 0 277.9 245.0 Z" fill="#F0CC60" onclick="selectMid('loving', 'Loving', 'peaceful')"/>
+<text class="fw-label-mid" x="281.3" y="281.3" text-anchor="middle" dominant-baseline="middle" transform="rotate(-45.0 281.3 281.3)">Loving</text>
+<path class="fw-slice fw-mid" data-core="peaceful" d="M 270.0 321.2 A 140 140 0 0 1 200.0 340.0 L 200.0 290.0 A 90 90 0 0 0 245.0 277.9 Z" fill="#E0BC50" onclick="selectMid('thankful', 'Thankful', 'peaceful')"/>
+<text class="fw-label-mid" x="229.8" y="311.1" text-anchor="middle" dominant-baseline="middle" transform="rotate(-15.0 229.8 311.1)">Thankful</text>
+<path class="fw-slice fw-mid" data-core="sad" d="M 200.0 340.0 A 140 140 0 0 1 130.0 321.2 L 155.0 277.9 A 90 90 0 0 0 200.0 290.0 Z" fill="#9BAADE" onclick="selectMid('lonely', 'Lonely', 'sad')"/>
+<text class="fw-label-mid" x="170.2" y="311.1" text-anchor="middle" dominant-baseline="middle" transform="rotate(195.0 170.2 311.1)">Lonely</text>
+<path class="fw-slice fw-mid" data-core="sad" d="M 130.0 321.2 A 140 140 0 0 1 78.8 270.0 L 122.1 245.0 A 90 90 0 0 0 155.0 277.9 Z" fill="#8B9ACE" onclick="selectMid('guilty', 'Guilty', 'sad')"/>
+<text class="fw-label-mid" x="118.7" y="281.3" text-anchor="middle" dominant-baseline="middle" transform="rotate(225.0 118.7 281.3)">Guilty</text>
+<path class="fw-slice fw-mid" data-core="angry" d="M 78.8 270.0 A 140 140 0 0 1 60.0 200.0 L 110.0 200.0 A 90 90 0 0 0 122.1 245.0 Z" fill="#E06A5A" onclick="selectMid('furious', 'Furious', 'angry')"/>
+<text class="fw-label-mid" x="88.9" y="229.8" text-anchor="middle" dominant-baseline="middle" transform="rotate(255.0 88.9 229.8)">Furious</text>
+<path class="fw-slice fw-mid" data-core="angry" d="M 60.0 200.0 A 140 140 0 0 1 78.8 130.0 L 122.1 155.0 A 90 90 0 0 0 110.0 200.0 Z" fill="#D05A4A" onclick="selectMid('jealous', 'Jealous', 'angry')"/>
+<text class="fw-label-mid" x="88.9" y="170.2" text-anchor="middle" dominant-baseline="middle" transform="rotate(285.0 88.9 170.2)">Jealous</text>
+<path class="fw-slice fw-mid" data-core="fear" d="M 78.8 130.0 A 140 140 0 0 1 130.0 78.8 L 155.0 122.1 A 90 90 0 0 0 122.1 155.0 Z" fill="#E09070" onclick="selectMid('anxious', 'Anxious', 'fear')"/>
+<text class="fw-label-mid" x="118.7" y="118.7" text-anchor="middle" dominant-baseline="middle" transform="rotate(315.0 118.7 118.7)">Anxious</text>
+<path class="fw-slice fw-mid" data-core="fear" d="M 130.0 78.8 A 140 140 0 0 1 200.0 60.0 L 200.0 110.0 A 90 90 0 0 0 155.0 122.1 Z" fill="#D08060" onclick="selectMid('nervous', 'Nervous', 'fear')"/>
+<text class="fw-label-mid" x="170.2" y="88.9" text-anchor="middle" dominant-baseline="middle" transform="rotate(345.0 170.2 88.9)">Nervous</text>
+<path class="fw-slice fw-core" id="core-happy" d="M 200.0 110.0 A 90 90 0 0 1 277.9 155.0 L 241.6 176.0 A 48 48 0 0 0 200.0 152.0 Z" fill="#5BAD6F" onclick="selectCore('happy', 'Happy')"/>
+<text class="fw-label-core" x="236.5" y="136.8" text-anchor="middle" dominant-baseline="middle" transform="rotate(-150.0 236.5 136.8)">Happy</text>
+<path class="fw-slice fw-core" id="core-surprise" d="M 277.9 155.0 A 90 90 0 0 1 277.9 245.0 L 241.6 224.0 A 48 48 0 0 0 241.6 176.0 Z" fill="#5B8DC4" onclick="selectCore('surprise', 'Surprise')"/>
+<text class="fw-label-core" x="273.0" y="200.0" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90.0 273.0 200.0)">Surprise</text>
+<path class="fw-slice fw-core" id="core-peaceful" d="M 277.9 245.0 A 90 90 0 0 1 200.0 290.0 L 200.0 248.0 A 48 48 0 0 0 241.6 224.0 Z" fill="#E8B84B" onclick="selectCore('peaceful', 'Peaceful')"/>
+<text class="fw-label-core" x="236.5" y="263.2" text-anchor="middle" dominant-baseline="middle" transform="rotate(-30.0 236.5 263.2)">Peaceful</text>
+<path class="fw-slice fw-core" id="core-sad" d="M 200.0 290.0 A 90 90 0 0 1 122.1 245.0 L 158.4 224.0 A 48 48 0 0 0 200.0 248.0 Z" fill="#8B9DD4" onclick="selectCore('sad', 'Sad')"/>
+<text class="fw-label-core" x="163.5" y="263.2" text-anchor="middle" dominant-baseline="middle" transform="rotate(210.0 163.5 263.2)">Sad</text>
+<path class="fw-slice fw-core" id="core-anger" d="M 122.1 245.0 A 90 90 0 0 1 122.1 155.0 L 158.4 176.0 A 48 48 0 0 0 158.4 224.0 Z" fill="#D45A4A" onclick="selectCore('anger', 'Anger')"/>
+<text class="fw-label-core" x="127.0" y="200.0" text-anchor="middle" dominant-baseline="middle" transform="rotate(270.0 127.0 200.0)">Anger</text>
+<path class="fw-slice fw-core" id="core-fear" d="M 122.1 155.0 A 90 90 0 0 1 200.0 110.0 L 200.0 152.0 A 48 48 0 0 0 158.4 176.0 Z" fill="#D47A5A" onclick="selectCore('fear', 'Fear')"/>
+<text class="fw-label-core" x="163.5" y="136.8" text-anchor="middle" dominant-baseline="middle" transform="rotate(330.0 163.5 136.8)">Fear</text>
+<circle cx="200" cy="200" r="48" fill="white" opacity="0.95"/>
+<text id="fw-centre-label" x="200" y="196" text-anchor="middle" class="fw-centre-main">I feel...</text>
+<text id="fw-centre-sub" x="200" y="213" text-anchor="middle" class="fw-centre-hint">tap to explore</text>
+</svg>
     </div>
     <div id="fw-result" class="fw-result" style="display:none;">
       <div class="fw-result-feeling" id="fw-result-feeling"></div>
@@ -743,40 +783,38 @@ const feelingDescs = {
 
 let currentCore = null;
 
-function selectCore(core) {
+function selectCore(core, label) {
   currentCore = core;
   document.querySelectorAll('.fw-slice').forEach(s => {
     s.classList.remove('active');
     if (s.dataset.core && s.dataset.core !== core) {
-      s.style.opacity = '0.3';
+      s.style.opacity = '0.35';
     } else {
       s.style.opacity = '1';
     }
   });
   document.getElementById('core-' + core)?.classList.add('active');
-  document.getElementById('fw-centre-label').textContent = core.charAt(0).toUpperCase() + core.slice(1);
-  document.getElementById('fw-centre-sub').textContent = 'tap to explore';
-  showResult(core);
+  document.getElementById('fw-centre-label').textContent = label || core;
+  document.getElementById('fw-centre-sub').textContent = 'tap a segment';
+  showResult(core, label || core);
 }
 
-function selectMid(feeling, core) {
-  document.getElementById('fw-centre-label').textContent = feeling.charAt(0).toUpperCase() + feeling.slice(1);
+function selectMid(key, label, core) {
+  document.getElementById('fw-centre-label').textContent = label;
   document.getElementById('fw-centre-sub').textContent = '→ more specific?';
-  showResult(feeling);
+  showResult(key, label);
 }
 
-function selectOuter(feeling) {
-  const label = feeling.replace('2','');
-  document.getElementById('fw-centre-label').textContent = label.charAt(0).toUpperCase() + label.slice(1);
+function selectOuter(key, label) {
+  document.getElementById('fw-centre-label').textContent = label;
   document.getElementById('fw-centre-sub').textContent = '✦';
-  showResult(feeling);
+  showResult(key, label);
 }
 
-function showResult(feeling) {
-  const key = feeling.replace('2','');
-  const desc = feelingDescs[key] || feelingDescs[feeling] || "You're feeling something real. That's enough to start with.";
-  const label = key.charAt(0).toUpperCase() + key.slice(1);
-  document.getElementById('fw-result-feeling').textContent = label;
+function showResult(key, label) {
+  const lookupKey = (key || '').toLowerCase().replace(/[- ]/g,'_');
+  const desc = feelingDescs[lookupKey] || feelingDescs[key] || "You're feeling something real. That's enough to start with.";
+  document.getElementById('fw-result-feeling').textContent = label || key;
   document.getElementById('fw-result-desc').textContent = desc;
   const result = document.getElementById('fw-result');
   result.style.display = 'block';
